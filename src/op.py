@@ -47,17 +47,17 @@ class op(object):
 
     def train(self,Train_flag):
         data = data_loader(self.content_dataset)
-        print 'Shuffle ....'
+        print ('Shuffle ....')
         random_order = np.random.permutation(len(data))
         data = [data[i] for i in random_order[:10000*self.batch_size]]
-        print 'Shuffle Done'
+        print ('Shuffle Done')
 
         start_time = time.time()
         count = 0
 
         try:
             self.load()
-            print 'Weight Load !!'
+            print ('Weight Load !!')
         except:
             self.sess.run(tf.global_variables_initializer())
 
@@ -116,7 +116,7 @@ class op(object):
                 filename = fn[:-4] + '_' + str(style_idx) + '_output.bmp'
                 scm.imsave(os.path.join(test_output_dir, filename), im_output)
 
-            print filename
+            print (filename)
 
 
     def save(self):
